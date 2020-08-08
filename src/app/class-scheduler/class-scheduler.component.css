@@ -1,0 +1,17 @@
+.classes {
+    padding: 1rem;
+  }
+  
+  .classes a {
+    cursor: pointer;
+  }
+  
+  .form-container, .class-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  .full-width {
+    width: 80%;
+    display: block;
+  }

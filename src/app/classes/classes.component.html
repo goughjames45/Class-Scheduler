@@ -1,0 +1,62 @@
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center" class="classes">
+    <mat-list fxFlex="100%" fxFlex.gt-sm="20%">
+      <mat-list-item *ngFor='let a of classes | async'>
+        <a (click)="onSelectClass(a.id)">
+          {{a.title}}
+        </a>
+      </mat-list-item>
+    </mat-list>
+    <mat-divider fxShow="false" fxShow.gt-sm [vertical]="true"></mat-divider>
+    <mat-divider fxShow="true" fxShow.gt-sm="false" [vertical]="false"></mat-divider>
+    <div fxFlex="100%" fxFlex.gt-sm="70%" *ngIf="!editClass" class="class-container">
+      <h3>{{currentClass.title}}</h3>
+      <p>
+        {{currentClass.text}}
+      </p>
+      <div fxLayout="row" fxLayoutAlign="space-between center" >
+        <button mat-raised-button color="primary" (click)="onEditClass()" *ngIf="classSelected()">Edit</button>
+        <button mat-raised-button color="warn" (click)="onDeleteClass()" *ngIf="classSelected()">Delete</button>
+        <button mat-raised-button color="primary" (click)="onNewClass()">New Class</button>
+      </div>
+    </div>
+    <div fxFlex="100%" fxFlex.gt-sm="70%" *ngIf="editClass" class="form-container">
+      <form [formGroup]="editClassForm" (ngSubmit)="updateClass()">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Title" formControlName="title">
+        </mat-form-field>
+  
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Class text" formControlName="text"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Number of A" formControlName="A"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Number of B" formControlName="B"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Number of C" formControlName="C"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Number of D" formControlName="D"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Number of F" formControlName="F"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Number of W" formControlName="W"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Number of Other" formControlName="Other"></textarea>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Update</button>
+      </form>
+    </div>
+  </div>

@@ -1,0 +1,36 @@
+<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center" class="grades">
+    
+    <h1>Find Course Grade Data</h1>
+    
+
+    <div fxFlex="100%" fxFlex.gt-sm="70%" class="form-container">
+        <h3 class="grade-container">Search for Course</h3>
+        <form [formGroup]="searchCourseForm" (ngSubmit)="searchCourses()">
+          <mat-form-field class="grade-container">
+            <input matInput placeholder="Course" formControlName="course">
+          </mat-form-field>
+          <button mat-raised-button color="primary">Search</button>
+        </form>
+
+
+        <div *ngIf="selectedCourse">
+            <button mat-raised-button color="primary" (click)="addToSchedule()">Add To Schedule</button>
+        </div>
+
+
+        <h3 class="grade-container">Class Schedule</h3>
+        <div *ngIf="classSchedule">
+            <mat-list fxFlex="100%" fxFlex.gt-sm="20%">
+                <mat-list-item *ngFor='let course of classSchedule'>
+                    <span>{{course.title}}</span>
+                    <input #minGrade matInput placeholder="Minimum Required Grade"  (change)="calcGradeProbability(minGrade.value)">
+                </mat-list-item>
+            </mat-list>
+
+            <span>{{currPassingProbability}}% chance to pass</span>
+        </div>
+        
+        
+      </div>
+    
+</div>

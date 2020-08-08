@@ -1,0 +1,24 @@
+<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center" class="grades">
+    
+    <h1>Find Course Grade Data</h1>
+    
+
+    <div fxFlex="100%" fxFlex.gt-sm="70%" class="form-container">
+        <h3 class="grade-container">Search for Course</h3>
+        <form [formGroup]="searchCourseForm" (ngSubmit)="searchCourses()">
+          <mat-form-field class="grade-container">
+            <input matInput placeholder="Course" formControlName="course">
+          </mat-form-field>
+          <button mat-raised-button color="primary">Search</button>
+        </form>
+      </div>
+
+    <div *ngIf="selectedCourse">
+        <span>{{selectedCourse.title}}</span>
+        <span>{{selectedCourse.text}}</span>
+        <app-bar-chart [course]="selectedCourse" ></app-bar-chart>
+    </div>
+    
+</div>
+
+
